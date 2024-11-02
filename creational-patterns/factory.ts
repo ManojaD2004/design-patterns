@@ -45,6 +45,13 @@ class ConcreteCreatorA extends Creator {
   createPrd(): Product {
     return new ConcreteProductA("Apple", 100);
   }
+  public someOtherFunc(): void {
+    // you can override and change the business logic
+    console.log("Independent Working Override!");
+    const tempPrd = this.createPrd();
+    const msg = tempPrd.doSome();
+    console.log("Overrided:", msg);
+  }
 }
 
 class ConcreteCreatorB extends Creator {
@@ -58,9 +65,9 @@ function clientLogic(clientFactory: Creator) {
 }
 
 function main() {
+  console.log("Factory:\n");
   clientLogic(new ConcreteCreatorA());
   clientLogic(new ConcreteCreatorB());
-  console.log("Factory!");
 }
 
 export { main };
