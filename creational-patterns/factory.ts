@@ -1,6 +1,9 @@
 abstract class Product {
   constructor(protected prdName: string, protected prdPrice: number) {}
   abstract doSome(): string;
+  getValues() {
+    return { prdName: this.prdName, prdPrice: this.prdPrice };
+  }
 }
 
 class ConcreteProductA extends Product {
@@ -45,18 +48,22 @@ class ConcreteCreatorA extends Creator {
   createPrd(): Product {
     return new ConcreteProductA("Apple", 100);
   }
-  public someOtherFunc(): void {
-    // you can override and change the business logic
-    console.log("Independent Working Override!");
-    const tempPrd = this.createPrd();
-    const msg = tempPrd.doSome();
-    console.log("Overrided:", msg);
-  }
 }
 
 class ConcreteCreatorB extends Creator {
   createPrd(): Product {
     return new ConcreteProductB("Carrot", 200);
+  }
+  public someOtherFunc(): void {
+    // you can override and change the business logic
+    console.log("Independent Working Override!");
+    const tempPrd = this.createPrd();
+    const prdValues = tempPrd.getValues();
+    const msg = `Product name is: ${prdValues.prdName}. And price is: $ ${
+      prdValues.prdPrice
+    }, Rs ${prdValues.prdPrice * 82.76}
+    `;
+    console.log("Overrided:", msg);
   }
 }
 
