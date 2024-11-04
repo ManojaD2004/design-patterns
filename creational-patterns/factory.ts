@@ -1,3 +1,4 @@
+import chalk from "chalk";
 abstract class Product {
   constructor(protected prdName: string, protected prdPrice: number) {}
   abstract doSome(): string;
@@ -72,7 +73,7 @@ function clientLogic(clientFactory: Creator) {
 }
 
 function main() {
-  console.log("Factory:\n");
+  console.log(chalk.red("Factory:\n"));
   clientLogic(new ConcreteCreatorA());
   clientLogic(new ConcreteCreatorB());
 }

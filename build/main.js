@@ -1,4 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const factory_1 = require("./creational-patterns/factory");
-(0, factory_1.main)();
+const abstract_factory_1 = require("./creational-patterns/abstract-factory");
+// mainFactory();
+(0, abstract_factory_1.main)();

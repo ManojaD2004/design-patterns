@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 abstract class ProductA {
   // Table
   constructor(public prdName: string) {}
@@ -8,35 +10,18 @@ abstract class ProductB {
   // Chair
   constructor(public prdName: string) {}
   abstract doSome(): string;
+  abstract collabWithOtherPrd(otherPrd: ProductA): string;
 }
 
 abstract class AbsFactory {
   abstract createProductA(): ProductA;
   abstract createProductB(): ProductB;
-  doSome() {
-    const prdA = this.createProductA();
-    const msgA = prdA.doSome();
-    const prdB = this.createProductB();
-    const msgB = prdB.doSome();
-    console.log(msgA);
-    console.log(msgB);
-  }
 }
 
 class ConcretePrdA1 extends ProductA {
   private typePrd = "A1";
   constructor() {
     super("Table with Black color");
-  }
-  doSome(): string {
-    return `This is "${this.prdName}". Type: ${this.typePrd}`;
-  }
-}
-
-class ConcretePrdB1 extends ProductB {
-  private typePrd = "B1";
-  constructor() {
-    super("Chair with Black color");
   }
   doSome(): string {
     return `This is "${this.prdName}". Type: ${this.typePrd}`;
@@ -53,6 +38,20 @@ class ConcretePrdA2 extends ProductA {
   }
 }
 
+class ConcretePrdB1 extends ProductB {
+  private typePrd = "B1";
+  constructor() {
+    super("Chair with Black color");
+  }
+  doSome(): string {
+    return `This is "${this.prdName}". Type: ${this.typePrd}`;
+  }
+  //   Should only work with that varient. Meaning ProductA1
+  collabWithOtherPrd(otherPrd: ProductA): string {
+    return `${otherPrd.prdName} and ${this.prdName} is cool. Type: ${this.typePrd}`;
+  }
+}
+
 class ConcretePrdB2 extends ProductB {
   private typePrd = "B2";
   constructor() {
@@ -60,6 +59,10 @@ class ConcretePrdB2 extends ProductB {
   }
   doSome(): string {
     return `This is "${this.prdName}". Type: ${this.typePrd}`;
+  }
+  //   Should only work with that varient. Meaning ProductA2
+  collabWithOtherPrd(otherPrd: ProductA): string {
+    return `${otherPrd.prdName}, and ${this.prdName} is cool. Type: ${this.typePrd}`;
   }
 }
 
@@ -82,11 +85,18 @@ class ConcreteFactory2 extends AbsFactory {
 }
 
 function clientLogic(factory: AbsFactory) {
-  factory.doSome();
+  const prdA = factory.createProductA();
+  const prdB = factory.createProductB();
+  const msgA = prdA.doSome();
+  const msgB = prdB.collabWithOtherPrd(prdA);
+  console.log(chalk.bold(msgA));
+  console.log(chalk.magenta(msgB));
 }
 
 function main() {
-  console.log("Abstract Factory (Varients of group of Products):");
+  console.log(
+    chalk.yellow("Abstract Factory (Varients of group of Products):")
+  );
   console.log("Here are the details of the Products of Factory 1: ");
   clientLogic(new ConcreteFactory1());
   console.log("Here are the details of the Products of Factory 2: ");
