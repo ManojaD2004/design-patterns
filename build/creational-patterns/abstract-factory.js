@@ -20,28 +20,11 @@ class ProductB {
     }
 }
 class AbsFactory {
-    doSome() {
-        const prdA = this.createProductA();
-        const msgA = prdA.doSome();
-        const prdB = this.createProductB();
-        const msgB = prdB.doSome();
-        console.log(msgA);
-        console.log(msgB);
-    }
 }
 class ConcretePrdA1 extends ProductA {
     typePrd = "A1";
     constructor() {
         super("Table with Black color");
-    }
-    doSome() {
-        return `This is "${this.prdName}". Type: ${this.typePrd}`;
-    }
-}
-class ConcretePrdB1 extends ProductB {
-    typePrd = "B1";
-    constructor() {
-        super("Chair with Black color");
     }
     doSome() {
         return `This is "${this.prdName}". Type: ${this.typePrd}`;
@@ -56,6 +39,19 @@ class ConcretePrdA2 extends ProductA {
         return `This is "${this.prdName}". Type: ${this.typePrd}`;
     }
 }
+class ConcretePrdB1 extends ProductB {
+    typePrd = "B1";
+    constructor() {
+        super("Chair with Black color");
+    }
+    doSome() {
+        return `This is "${this.prdName}". Type: ${this.typePrd}`;
+    }
+    //   Should only work with that varient. Meaning ProductA1
+    collabWithOtherPrd(otherPrd) {
+        return `${otherPrd.prdName} and ${this.prdName} is cool. Type: ${this.typePrd}`;
+    }
+}
 class ConcretePrdB2 extends ProductB {
     typePrd = "B2";
     constructor() {
@@ -63,6 +59,10 @@ class ConcretePrdB2 extends ProductB {
     }
     doSome() {
         return `This is "${this.prdName}". Type: ${this.typePrd}`;
+    }
+    //   Should only work with that varient. Meaning ProductA2
+    collabWithOtherPrd(otherPrd) {
+        return `${otherPrd.prdName}, and ${this.prdName} is cool. Type: ${this.typePrd}`;
     }
 }
 class ConcreteFactory1 extends AbsFactory {
@@ -80,20 +80,17 @@ class ConcreteFactory2 extends AbsFactory {
     createProductB() {
         return new ConcretePrdB2();
     }
-    doSome() {
-        const prdA = this.createProductA();
-        const msgA = prdA.doSome();
-        const prdB = this.createProductB();
-        const msgB = prdB.doSome();
-        console.log("Overrided:", chalk_1.default.blue(msgA));
-        console.log("Overrided:", msgB);
-    }
 }
 function clientLogic(factory) {
-    factory.doSome();
+    const prdA = factory.createProductA();
+    const prdB = factory.createProductB();
+    const msgA = prdA.doSome();
+    const msgB = prdB.collabWithOtherPrd(prdA);
+    console.log(chalk_1.default.bold(msgA));
+    console.log(chalk_1.default.magenta(msgB));
 }
 function main() {
-    console.log("Abstract Factory (Varients of group of Products):");
+    console.log(chalk_1.default.yellow("Abstract Factory (Varients of group of Products):"));
     console.log("Here are the details of the Products of Factory 1: ");
     clientLogic(new ConcreteFactory1());
     console.log("Here are the details of the Products of Factory 2: ");
