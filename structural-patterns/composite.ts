@@ -93,7 +93,8 @@ function clientLogic() {
   folder3.addNode(file4);
   // The work is divided equally to all the nodes and can be worked independently of the nodes too!
   // You can work either as group like directory moving, or indiviual work dividing like
-  // calculating huge operations (or dividing work among processes)!
+  // calculating huge operations (or dividing work among processes) or moving components
+  // all together in a group!
   console.log(chalk.blue("Folder 1 Tree View: "));
   console.log(chalk.cyanBright(folder1.doubleClick()));
   console.log(chalk.blue("Folder 2 Tree View: "));
