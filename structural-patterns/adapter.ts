@@ -59,6 +59,10 @@ class MyLogicCode implements Service<Product1> {
   }
 }
 
+// You can also make Adapter class like, which extends two classes
+// This version is object like Adapter
+// Also the Adapter can be two way. Like Product1 to Product2 and vice versa
+// But creating two different classes give more focus and flexibility
 class Product2Adapter extends Product1 {
   private adaptee: Product2;
   constructor(adaptee: Product2) {
@@ -78,7 +82,7 @@ function clientLogic(
 
 function main() {
   console.log(chalk.yellow("Adapter:"));
-  //   Better example would be to use Adapter for JSON to XML/YAML, vice versa
+  //  Better example would be to use Adapter for JSON to XML/YAML, vice versa
   console.log(
     chalk.blue("Creating 2 different products with 2 different types...")
   );
