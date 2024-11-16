@@ -8,9 +8,9 @@ type CreationalType =
   | "adapter"
   | "bridge"
   | "composite"
-  | "decorator";
+  | "decorator" | "facade";
 const catalogType: CataLogType = "structural";
-const dpType: CreationalType = "decorator";
+const dpType: CreationalType = "facade";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
