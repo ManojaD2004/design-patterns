@@ -1,15 +1,16 @@
 type CataLogType = "creational" | "structural" | "behavioral";
-type CreationalDPType =
+type CreationalType =
   | "factory"
   | "abstract-factory"
   | "builder"
   | "prototype"
   | "singleton"
   | "adapter"
-  | "bridge" | "composite";
-type CreationalSTType = "adapter";
+  | "bridge"
+  | "composite"
+  | "decorator";
 const catalogType: CataLogType = "structural";
-const dpType: CreationalDPType = "composite";
+const dpType: CreationalType = "decorator";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
@@ -22,11 +23,11 @@ async function main() {
 }
 
 main();
-// Usually the need for patterns arises when people choose a programming language or a 
-// technology that lacks the necessary level of abstraction. In this case, patterns become 
+// Usually the need for patterns arises when people choose a programming language or a
+// technology that lacks the necessary level of abstraction. In this case, patterns become
 // a kludge that gives the language much-needed super-abilities. - refactoring.guru
-// 
+//
 // "If all you have is a hammer, everything looks like a nail."
-// This is the problem that haunts many novices who have just familiarized themselves 
-// with patterns. Having learned about patterns, they try to apply them everywhere, even 
+// This is the problem that haunts many novices who have just familiarized themselves
+// with patterns. Having learned about patterns, they try to apply them everywhere, even
 // in situations where simpler code would do just fine. - refactoring.guru
