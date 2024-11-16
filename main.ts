@@ -10,9 +10,10 @@ type CreationalType =
   | "composite"
   | "decorator"
   | "facade"
-  | "flyweight";
+  | "flyweight"
+  | "proxy";
 const catalogType: CataLogType = "structural";
-const dpType: CreationalType = "flyweight";
+const dpType: CreationalType = "proxy";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
