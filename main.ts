@@ -11,9 +11,11 @@ type CreationalType =
   | "decorator"
   | "facade"
   | "flyweight"
-  | "proxy";
-const catalogType: CataLogType = "structural";
-const dpType: CreationalType = "proxy";
+  | "proxy"
+  | "responsibility"
+  | "command";
+const catalogType: CataLogType = "behavioral";
+const dpType: CreationalType = "command";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
