@@ -16,9 +16,10 @@ type CreationalType =
   | "command"
   | "iterator"
   | "mediator"
-  | "memento";
+  | "memento"
+  | "observer";
 const catalogType: CataLogType = "behavioral";
-const dpType: CreationalType = "memento";
+const dpType: CreationalType = "observer";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {

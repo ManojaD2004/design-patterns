@@ -90,7 +90,7 @@ function clientLogic() {
 }
 
 function main() {
-  console.log(chalk.yellow("ConcMemento:"));
+  console.log(chalk.yellow("Memento:"));
   clientLogic();
 }
 
