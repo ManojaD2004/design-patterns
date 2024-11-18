@@ -14,9 +14,11 @@ type CreationalType =
   | "proxy"
   | "responsibility"
   | "command"
-  | "iterator" | "mediator";
+  | "iterator"
+  | "mediator"
+  | "memento";
 const catalogType: CataLogType = "behavioral";
-const dpType: CreationalType = "mediator";
+const dpType: CreationalType = "memento";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
