@@ -20,9 +20,10 @@ type CreationalType =
   | "observer"
   | "state"
   | "strategy"
-  | "templateMethod";
+  | "templateMethod"
+  | "visitor";
 const catalogType: CataLogType = "behavioral";
-const dpType: CreationalType = "templateMethod";
+const dpType: CreationalType = "visitor";
 
 // You can make either paramaterised way or function way for any operations.
 async function main() {
