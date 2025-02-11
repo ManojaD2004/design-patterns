@@ -31,7 +31,7 @@ async function main() {
     const module = await import(`./${catalogType}-patterns/${dpType}`);
     module.main();
   } catch (error) {
-    console.error(error); // Write to stderr, log writes to stdout
+    console.error(error); // Write to stderr, log writes to stdout.
   }
 }
 
